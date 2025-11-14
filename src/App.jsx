@@ -169,16 +169,21 @@ function App() {
       </div>
     
       {/* skills and tech section // and about me*/}
-      <div class="fade-in-section delay-200 flex flex-col justify-center-safe items-center gap-6">
-        <p id="skills" class="text-3xl text-white"> Technologies & Skills </p>
-        <div class="flex flex-wrap justify-center gap-4 max-w-6xl">
-          {skills.map((skill, index) => (
-            <div key={index}
-              className="drop-shadow-sm drop-shadow-black/60 flex items-center gap-2 hover-press border border-white px-5 py-2 rounded-xl text-[16px] text-white hover:bg-[#0353a4] hover:border-[#0353a4] transition cursor-default">
-              {skill.icon}
-              {skill.name}
-            </div>
-          ))}
+      <div className='fade-in-section delay-200 w-full flex flex-row justify-between'>
+        <div class="flex flex-col w-4/8 justify-center-safe gap-6">
+          <p id="skills" class="text-3xl text-white"> Technologies & Skills </p>
+          <div class="flex flex-wrap gap-3">
+            {skills.map((skill, index) => (
+              <div key={index}
+                className="drop-shadow-sm drop-shadow-black/60 flex items-center gap-2 hover-press border border-white px-4 py-2 rounded-xl text-[16px] text-white hover:bg-[#0353a4] hover:border-[#0353a4] transition cursor-default">
+                {skill.icon}
+                {skill.name}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="flex flex-col w-7/16 text-right justify-center">
+            <p className='text-white text-xl'>I love trying and learning new hobbies and skills. I’ve gotten into snowboarding but I keep busting my a**, and it isn’t cheap! More seriously though, graphic design has been the hobby that shaped my creativity since middle school. And, after 8+ years of practice, I’ve created graphics for others, including YouTube banners, thumbnails, and even logos for gaming teams. It is partly the reason for the drive to build products and designs for myself and others. </p>
         </div>
       </div>
         
