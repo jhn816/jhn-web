@@ -70,7 +70,8 @@ function App() {
   return (<>
 
     <div class="w-screen bg-gradient-to-br from-gray-900 to-gray-500 pb-60 pt-5 px-70 flex flex-col gap-35">
-      <div class="w-[calc(100%)] rounded-2xl h-18 bg-white/5 flex flex-row items-center justify-center gap-15 border-b-1 border-white/30"> 
+      <div class="w-[calc(100%)] rounded-2xl h-18 bg-white/5 px-20 flex flex-row items-center justify-center gap-15 border-b-1 border-white/30"> 
+        <a className="text-base text-white font-light mr-auto"> Website still in Construction! </a>
         <a href="#about" className="text-base text-white font-light cursor-pointer hover-up">About Me</a>
         <a href="#skills" className="text-base text-white font-light cursor-pointer hover-up">Skills</a>
         <a href="#projects" className="text-base text-white font-light cursor-pointer hover-up">Projects</a>
