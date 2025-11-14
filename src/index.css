@@ -1,5 +1,51 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Manrope";
+  src: url("/src/assets/fonts/Manrope-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/src/assets/fonts/Manrope-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/src/assets/fonts/Manrope-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/src/assets/fonts/Manrope-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/src/assets/fonts/Manrope-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/src/assets/fonts/Manrope-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,6 +59,50 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-400 { animation-delay: 400ms; }
+
+@layer utilities {
+  .hover-press {
+    transition: .3s;
+  }
+  
+  .hover-press:hover {
+    transform: scale(1.02);
+    cursor: pointer;;
+  }
+  
+  .hover-press:active {
+    transform: scale(1);
+  }
+
+  .hover-up {
+    transition: .3s;
+  }
+  
+  .hover-up:hover {
+    transform: translateY(-2px);
+    cursor: pointer;;
+  }
+  
+  .hover-up:active {
+    transform: scale(1);
+  }
 }
 
 /* a {
