@@ -29,6 +29,26 @@ function App() {
       setIsScrolled(window.scrollY > 50);
     };
 
+    function updateCurve() {
+      const width = window.innerWidth;
+      const path = document.getElementById("curve");
+  
+      if (width < 768) {
+        path.setAttribute("d", "M0 750 C 200 900, 378 600, 767 659 L767 905 L0 905 Z");
+      } else {
+        path.setAttribute("d", "M0 750 C 530 1000, 1000 800, 1709 335 L1709 905 L0 905 Z");
+        //   M0 750
+        //   C 530 1000, 1000 800, 1709 335
+        //   L1709 905
+        //   L0 905
+        //   Z
+        // }
+      }
+    }
+  
+    window.addEventListener("resize", updateCurve);
+    updateCurve();
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -37,6 +57,21 @@ function App() {
   const experiences = [
     "Work", "Academic", "Volunteer"
   ];
+
+  const contacts = [
+    { name: "Contact",
+      link: "",
+      icon: <MdEmail size={18}/>
+    },
+    { name: "LinkedIn",
+      link: "https://www.linkedin.com/in/jhn816/",
+      icon: <FaLinkedin size={18}/>
+    },
+    { name: "GitHub",
+      link: "https://github.com/jhn816",
+      icon: <FaGithub size={18}/>
+    }
+  ]
 
   const skills = {
     frontend: [
@@ -128,7 +163,13 @@ function App() {
         <a href="#experience" className="text-base font-bold cursor-pointer hover-up">EXPERIENCE</a>
       </div>
       
-    <div className="relative w-screen h-screen justify-center bg-gradient-to-br from-[#131b34] to-[#121520] pt-5 px-70 flex flex-col gap-35">
+    <div className="relative w-screen md:w-screen h-screen justify-center bg-gradient-to-br from-[#131b34] to-[#121520] pt-5 flex flex-col gap-35
+    px-10
+    md:px-20
+    lg:px-30
+    xl:px-50
+    2xl:px-70
+    ">
       {/* pop up for projects section */}
       { projectView !== 0 && <div className="flex items-center justify-center fixed inset-0 bg-black/20 z-50">
         <div className="bg-gray-900 w-3/4 h-1/2 p-12 rounded-4xl">
@@ -165,55 +206,55 @@ function App() {
       
       {/* path art for intro */}
       <svg   className="absolute top-0 left-0 w-screen h-screen pointer-events-none drop-shadow-[0_-20px_6px_rgba(0,0,0,0.1)]" width="200" height="120">
-          <path 
-            d="
-              M0 750
-              C 530 1000, 1000 800, 1709 335
-              L1709 905
-              L0 905
-              Z
-            "
+          <path id="curve"
             className="fill-gray-100 stroke-gray-100 stroke-2"
           />
         </svg>
 
       {/* introduction section*/}
-      <div className="fade-in-section flex flex-row gap-20 h-auto">
-        <div className=" w-5/8 h-80 flex-col flex h-fit">
+      <div className="w-full gap-[20px] fade-in-section flex flex-row justify-between h-fit">
+        <div className=" w-fit h-80 flex-col flex h-fit">
           <div className="flex flex-col"> 
-            <div className="flex flex-row gap-3 mb-0 mt-0">
-              <a className="oswald text-[3.45rem] pb-[.75rem] weight-600 text-white"> Hi, my name is{" "}</a>
-              <a className="h-title text-[#0353a4] font-semibold text-shadow-[0px_1px_1px_rgba(255,255,255,0.9)]"> Justin Nguyen </a>
+            <div className="flex flex-row gap-1 md:gap-3 mb-0 mt-0">
+              <a className="oswald text-[clamp(1rem,3.75vw,3.25rem)] pb-[.75rem] weight-600 text-white"> Hi, my name is{" "}</a>
+              <a className="h-title text-[clamp(1rem,3.75vw,3.25rem)] text-[#0353a4] font-semibold text-shadow-[0px_1px_1px_rgba(255,255,255,0.4)] md:text-shadow-[0px_1px_1px_rgba(255,255,255,0.9)]"> Justin Nguyen </a>
             </div>
-            <a className="body text-2xl text-white"> Buffalo, New York</a>
+            <a className="body text-[clamp(.5rem,3.75vw,1.5rem)] text-white"> Buffalo, New York</a>
           </div>
 
           <div className="mt-auto">
-            <p className="body text-xl mt-5 mb-[10px] text-white"> Aspiring Full Stack Software Engineer focused on building creative solutions that address problems from the simplest to the most complex. With experience under project managers, I have created projects that go into areas of web development, UX/UI design, and computer security. Going into the future, I have plans of diving into AI, specifically ML.</p>
-            <div className="flex flex-row gap-2 body"> 
-              <a className="flex items-center gap-2 bg-[#0353a4] w-auto px-10 py-2 rounded-2xl text-[14px] text-white hover-press drop-shadow-black/20 drop-shadow-sm"> <MdEmail size={18}/> Contact </a>
-              <a href="https://www.linkedin.com/in/jhn816/"  target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[#0353a4] w-fit px-10 py-2 rounded-2xl text-[14px] text-white hover-press drop-shadow-black/20 drop-shadow-sm"> <FaLinkedin size={18}/> LinkedIn </a>
-              <a href="https://github.com/jhn816"  target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[#0353a4] w-auto px-10 py-2 rounded-2xl text-[14px] text-white hover-press drop-shadow-black/20 drop-shadow-sm"> <FaGithub size={18}/>GitHub </a>
-            </div>
+            <p className="body md:w-full text-[clamp(.15rem,3.75vw,1.25rem)] mt-5 mb-[10px] text-white"> Aspiring Full Stack Software Engineer focused on building creative solutions that address problems from the simplest to the most complex. With experience under project managers, I have created projects that go into areas of web development, UX/UI design, and computer security. Going into the future, I have plans of diving into AI, specifically ML.</p>
+            <div className="flex flex-col [@media(min-width:426px)]:flex-row gap-2 body"> 
+              {contacts.map((contact, index) => (
+                <a href={contact.link} target="_blank" rel="noopener noreferrer" className="[@media(max-width:426px)]:justify-center [@media(max-width:540px)]:px-5 px-10 py-2 text-[14px] flex items-center gap-2 bg-[#0353a4] rounded-2xl text-white hover-press drop-shadow-black/20 drop-shadow-sm">{contact.icon} {contact.name} </a>
+              ))}
+           </div>
           </div>
         </div>
         
-        <img src="/selfie.jpg" className="w-3/8 h-auto rounded-2xl  border-b-1 border-white/30  drop-shadow-black/20 drop-shadow-sm"/>
+        <img src="/selfie.jpg" className="w-3/8 h-fit rounded-2xl  border-b-1 border-white/30  drop-shadow-black/20 drop-shadow-sm
+        hidden lg:block"/>
       </div>
     </div>
           
-    <div className="w-screen bg-gray-100 pb-30 pt-10 px-70 flex flex-col gap-35 ">
+    <div className="w-screen bg-gray-100 pb-30 pt-10 flex flex-col gap-35 
+    px-10
+    md:px-20
+    lg:px-30
+    xl:px-50
+    2xl:px-70
+    ">
       {/* skills and tech section // and about me*/}
-      <div className='fade-in-section delay-200 w-full flex flex-row justify-between'>
-        <div className="flex flex-col w-4/8 justify-center-safe gap-3">
-          <p id="skills" className="header text-[#0353a4] drop-shadow-black/20 drop-shadow-sm"> TECHNOLOGIES </p>
-          <div className="flex flex-wrap gap-3">
-            <div className="flex flex-col w-full gap-3 border-black/10 border px-7 py-5 rounded-4xl"> 
+      <div className='fade-in-section delay-200 w-full gap-10 lg:gap-0 flex flex-col lg:flex-row justify-between'>
+        <div className="flex flex-col w-full text-center lg:text-left lg:w-4/8 justify-center-safe gap-3">
+          <p id="skills" className="header text-[clamp(2rem,3.75vw,3.25rem)] text-[#0353a4] drop-shadow-black/20 drop-shadow-sm"> TECHNOLOGIES </p>
+          <div className="flex flex-wrap lg:gap-3">
+            <div className="flex flex-col w-full gap-3 lg:border-black/10 lg:border lg:px-7 lg:py-5 rounded-4xl"> 
               <p className="oswald text-black text-2xl"> Frontend Skills</p>
-              <div className='flex flex-row flex-wrap gap-3'>
+              <div className='flex flex-row justify-center lg:justify-normal flex-wrap gap-3'>
                 {skills.frontend.map((skill, index) => (
                   <div key={index}
-                    className="body flex w-fit items-center gap-2 hover-press border border-black px-4 py-2 rounded-xl text-[16px] text-black hover:bg-[#0353a4] hover:text-white hover:border-[#0353a4] transition cursor-default">
+                    className="body flex w-fit items-center gap-2 hover-press border border-black px-2 py-1 text-[9px] lg:px-4 lg:py-2 rounded-xl lg:text-[16px] text-black hover:bg-[#0353a4] hover:text-white hover:border-[#0353a4] transition cursor-default">
                     {skill.icon}
                     {skill.name}
                   </div>
@@ -221,12 +262,12 @@ function App() {
               </div>
             </div>
 
-            <div className="flex flex-col w-full gap-3 border-black/10 border px-7 py-5 rounded-4xl"> 
+            <div className="flex flex-col w-full gap-3 lg:border-black/10 lg:border lg:px-7 py-5 rounded-4xl"> 
               <p className="oswald text-black text-2xl"> Backend Skills </p>
-              <div className='flex flex-row flex-wrap gap-3'>
+              <div className='flex flex-row justify-center lg:justify-normal flex-wrap gap-3'>
                 {skills.backend.map((skill, index) => (
                   <div key={index}
-                    className="body flex w-fit items-center gap-2 hover-press border border-black/ px-4 py-2 rounded-xl text-[16px] text-black hover:bg-[#0353a4] hover:text-white hover:border-[#0353a4] transition cursor-default">
+                    className="body flex w-fit items-center gap-2 hover-press border border-black px-2 py-1 text-[9px] lg:px-4 lg:py-2 rounded-xl lg:text-[16px] text-black hover:bg-[#0353a4] hover:text-white hover:border-[#0353a4] transition cursor-default">
                     {skill.icon}
                     {skill.name}
                   </div>
@@ -234,12 +275,12 @@ function App() {
               </div>
             </div>
 
-            <div className="flex flex-col w-full gap-3 border-black/10 border px-7 py-5 rounded-4xl"> 
+            <div className="flex flex-col w-full gap-3 lg:border-black/10 lg:border lg:px-7 py-5 rounded-4xl"> 
               <p className="oswald text-black text-2xl"> Tool Skills </p>
-              <div className='flex flex-row flex-wrap gap-3'>
+              <div className='flex flex-row justify-center lg:justify-normal flex-wrap gap-3'>
                 {skills.tools.map((skill, index) => (
                   <div key={index}
-                    className="body flex w-fit items-center gap-2 hover-press border border-black px-4 py-2 rounded-xl text-[16px] text-black hover:bg-[#0353a4] hover:text-white hover:border-[#0353a4] transition cursor-default">
+                    className="body flex w-fit items-center gap-2 hover-press border border-black px-2 py-1 text-[9px] lg:px-4 lg:py-2 rounded-xl lg:text-[16px] text-black hover:bg-[#0353a4] hover:text-white hover:border-[#0353a4] transition cursor-default">
                     {skill.icon}
                     {skill.name}
                   </div>
@@ -249,9 +290,9 @@ function App() {
 
           </div>
         </div>
-        <div className="flex flex-col w-7/16 text-right justify-center text-center h-full">
+        <div className="flex flex-col w-full text-center lg:text-right lg:w-7/16 h-full">
             <p id="about" className="h-title text-[#0353a4] text-2xl drop-shadow-black/20 drop-shadow-sm"> ABOUT ME </p>
-            <p className='body text-black text-xl'>I love trying and learning new hobbies and skills. I’ve gotten into snowboarding but I keep busting my a**, and it isn’t cheap! More seriously though, graphic design has been the hobby that shaped my creativity since middle school. And, after 8+ years of practice, I’ve created graphics for others, including YouTube banners, thumbnails, and even logos for gaming teams. It is partly the reason for the drive to build products and designs for myself and others. </p>
+            <p className='body text-[clamp(.15rem,3.75vw,1.25rem)] text-black text-xl'>I love trying and learning new hobbies and skills. I’ve gotten into snowboarding but I keep busting my a**, and it isn’t cheap! More seriously though, graphic design has been the hobby that shaped my creativity since middle school. And, after 8+ years of practice, I’ve created graphics for others, including YouTube banners, thumbnails, and even logos for gaming teams. It is partly the reason for the drive to build products and designs for myself and others. </p>
         </div>
       </div>
     </div>

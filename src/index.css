@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@layer base, components, utilities;
+
 @font-face {
   font-family: "Manrope";
   src: url("/src/assets/fonts/Manrope-ExtraLight.ttf") format("truetype");
@@ -119,7 +121,6 @@ html {
   .header {
     font-family: "Oswald", sans-serif;
     font-weight: 300;
-    font-size: 3rem;
   }
 
   .oswald {
@@ -129,14 +130,12 @@ html {
   .h-title {
     font-family: "Oswald", sans-serif;
     font-weight: 600;
-    font-size: 3.45rem;
     padding-bottom: .75rem;
   }
   
   .h-body {
     font-family: "Oswald", sans-serif;
     font-weight: 400;
-    font-size: 1.875rem;
   }
 
   .body {
