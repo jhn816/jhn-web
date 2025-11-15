@@ -198,7 +198,7 @@ function App() {
           </div>
         </div>
         
-        <img src="./public/selfie.jpg" className="w-3/8 h-auto rounded-2xl  border-b-1 border-white/30  drop-shadow-black/20 drop-shadow-sm"/>
+        <img src="/selfie.jpg" className="w-3/8 h-auto rounded-2xl  border-b-1 border-white/30  drop-shadow-black/20 drop-shadow-sm"/>
       </div>
     </div>
           
