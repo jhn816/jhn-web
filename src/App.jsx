@@ -169,8 +169,8 @@ function App() {
             d="
               M0 750
               C 530 1000, 1000 800, 1709 335
-              L1709 896
-              L0 896
+              L1709 905
+              L0 905
               Z
             "
             className="fill-gray-100 stroke-gray-100 stroke-2"
@@ -283,7 +283,7 @@ function App() {
       {/* my experience section */}
       <div className="flex flex-col justify-center-safe items-center gap-6">
         <p id="experience" className="header text-white"> EXPERIENCES</p>
-        <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2">
             {experiences.map((experience, index) => (
               <p key={index} className="bg-[#0353a4] w-auto px-10 py-2 rounded-2xl text-[14px] text-white hover-press drop-shadow-black/20 drop-shadow-sm"> {experience} </p>
             ))}
