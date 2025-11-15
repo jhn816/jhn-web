@@ -42,8 +42,46 @@
   font-style: normal;
 }
 
-body {
-  font-family: "Manrope", sans-serif;
+@font-face {
+  font-family: "Oswald";
+  src: url("/src/assets/fonts/Oswald-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("/src/assets/fonts/Oswald-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("/src/assets/fonts/Oswald-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("/src/assets/fonts/Oswald-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("/src/assets/fonts/Oswald-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("/src/assets/fonts/Oswald-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
 }
 
 :root {
@@ -63,7 +101,7 @@ body {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 130px;
 }
 
 @keyframes fadeInUp {
@@ -78,6 +116,33 @@ html {
 .delay-400 { animation-delay: 400ms; }
 
 @layer utilities {
+  .header {
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+    font-size: 3rem;
+  }
+
+  .oswald {
+    font-family: "Oswald", sans-serif;
+  }
+
+  .h-title {
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+    font-size: 3.45rem;
+    padding-bottom: .75rem;
+  }
+  
+  .h-body {
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    font-size: 1.875rem;
+  }
+
+  .body {
+    font-family: "Manrope", sans-serif;
+  }
+  
   .hover-press {
     transition: .3s;
   }
