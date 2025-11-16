@@ -18,21 +18,25 @@ import {
 } from 'react-icons/si';
 import { MdDashboard } from 'react-icons/md';
 import { FaTasks } from 'react-icons/fa';
+import { HiMenu, HiX } from 'react-icons/hi';
 
 function App() {
   const [projectView, setProjectView] = useState(0);
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [navHamburger, setNavHamburger] = useState(false);
+  const [hamOpen, setHamOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    function updateCurve() {
+    function resizeUpdate() {
       const width = window.innerWidth;
       const path = document.getElementById("curve");
-  
+      
+      // update background curve path
       if (width < 768) {
         path.setAttribute("d", "M0 750 C 200 900, 378 600, 767 659 L767 905 L0 905 Z");
       } else {
@@ -44,10 +48,17 @@ function App() {
         //   Z
         // }
       }
+
+      // update navigation bar from regular to hamburger
+      if (width < 1126) {
+        setNavHamburger(true);
+      } else {
+        setNavHamburger(false);
+      }
     }
   
-    window.addEventListener("resize", updateCurve);
-    updateCurve();
+    window.addEventListener("resize", resizeUpdate);
+    resizeUpdate();
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -155,21 +166,37 @@ function App() {
 
 
   return (<>
-      <div className={`oswald transition-all duration-400 ease-out ${isScrolled ? "w-[calc(100%)] px-[140px] h-20 drop-shadow-black/40 drop-shadow-xl text-white bg-[#182140]" : "w-[calc(100%-250px)] mx-[125px] mb-60px mt-[20px] rounded-4xl h-20 text-white bg-white/5"}  py-[45px] fixed z-99 px-20 flex flex-row items-center justify-center gap-15 border-b-1 border-white/30`}> 
-        <a className="text-base font-bold mr-auto"> WEBSITE UNDER CONSTRUCTION! </a>
+      {/* navigation bar */}
+      {!navHamburger ?
+        <div className={`oswald transition-all duration-300 ease-out h-20 ${isScrolled ? "w-[calc(100%)] px-[140px] drop-shadow-black/40 drop-shadow-xl text-white bg-[#182140]" : "w-[calc(100%-250px)] mx-[125px] mb-60px mt-[20px] rounded-4xl text-white bg-white/5"}  py-[45px] fixed z-99 px-20 flex flex-row items-center justify-center gap-[50px] border-b border-white/30`}> 
+        <a className="text-base font-bold mr-auto"> JHN-WEB UNDER CONSTRUCTION! </a>
         <a href="#about" className="text-base font-bold cursor-pointer hover-up">ABOUT ME</a> 
         <a href="#skills" className="text-base font-bold cursor-pointer hover-up">SKILLS</a>
         <a href="#projects" className="text-base font-bold cursor-pointer hover-up">PROJECTS</a>
         <a href="#experience" className="text-base font-bold cursor-pointer hover-up">EXPERIENCE</a>
+      </div> : <>
+      <div className={`oswald transition-all duration-300 ease-out h-20 ${isScrolled ? "left-0 right-0 px-[60px] drop-shadow-black/20 drop-shadow-xl text-white bg-[#182140]" : "left-5 right-5 px-10 mb-60 mt-[20px] rounded-3xl text-white bg-white/5"}  py-[45px] fixed z-101 flex flex-row items-center justify-center border-b border-white/30`}> 
+        <a className="text-base font-bold mr-auto"> JHN-WEB UNDER CONSTRUCTION! </a>
+        {!hamOpen ? 
+          <HiMenu onClick={() => setHamOpen(true)} className="transition hover:cursor-pointer hover:drop-shadow-[0px_0px_16px_#0353a4] hover:scale-[1.03] active:scale-[1]" size={40} /> : 
+          <HiX onClick={() => setHamOpen(false)} className="transition hover:cursor-pointer hover:drop-shadow-[0px_0px_16px_#0353a4] hover:scale-[1.03] active:scale-[1]" size={40} />}
       </div>
+      <div className={`fixed top-0 transition-all duration-300 ease-out drop-shadow-black/30 drop-shadow-lg ${hamOpen ? "opacity-0 translate-y-[-20px]" : "opacity-100"} ${isScrolled? "bg-white text-black left-5 right-5 rounded-b-4xl mt-22" : "bg-white/5 text-white left-10 right-10 rounded-4xl mt-30"} oswald flex flex-col gap-4 py-5 items-center fixed z-100 border-b-1 border-white/30`}> 
+        <a href="#about" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">ABOUT ME</a> 
+        <a href="#skills" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">SKILLS</a>
+        <a href="#projects" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">PROJECTS</a>
+        <a href="#experience" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">EXPERIENCE</a>
+      </div>
+      </>
+      }
       
     <div className="relative w-screen md:w-screen h-screen justify-center bg-gradient-to-br from-[#131b34] to-[#121520] pt-5 flex flex-col gap-35
-    px-10
-    md:px-20
-    lg:px-30
-    xl:px-50
-    2xl:px-70
-    ">
+      px-10
+      md:px-20
+      lg:px-30
+      xl:px-50
+      2xl:px-70
+      ">
       {/* pop up for projects section */}
       { projectView !== 0 && <div className="flex items-center justify-center fixed inset-0 bg-black/20 z-50">
         <div className="bg-gray-900 w-3/4 h-1/2 p-12 rounded-4xl">
@@ -213,24 +240,25 @@ function App() {
 
       {/* introduction section*/}
       <div className="w-full gap-[20px] fade-in-section flex flex-row justify-between h-fit">
-        <div className=" w-fit h-80 flex-col flex h-fit">
+        <div className=" w-fit h-80 flex-col flex gap-3 h-fit">
           <div className="flex flex-col"> 
-            <div className="flex flex-row gap-1 md:gap-3 mb-0 mt-0">
-              <a className="oswald text-[clamp(1rem,3.75vw,3.25rem)] pb-[.75rem] weight-600 text-white"> Hi, my name is{" "}</a>
-              <a className="h-title text-[clamp(1rem,3.75vw,3.25rem)] text-[#0353a4] font-semibold text-shadow-[0px_1px_1px_rgba(255,255,255,0.4)] md:text-shadow-[0px_1px_1px_rgba(255,255,255,0.9)]"> Justin Nguyen </a>
+            <div className="flex flex-row gap-2 md:gap-3 mb-0 mt-0">
+              <a className="oswald text-[clamp(2.4rem,3.75vw,3.25rem)] weight-600 text-white"> Hi, my name is{" "}</a>
+              <a className="h-title text-[clamp(2.4rem,3.75vw,3.25rem)] text-[#0353a4] font-semibold text-shadow-[0px_1px_1px_rgba(255,255,255,0.4)] md:text-shadow-[0px_1px_1px_rgba(255,255,255,0.9)]"> Justin Nguyen </a>
             </div>
-            <a className="body text-[clamp(.5rem,3.75vw,1.5rem)] text-white"> Buffalo, New York</a>
+            <a className="body text-[clamp(1.25rem,3.75vw,1.5rem)] text-white"> Buffalo, New York</a>
           </div>
 
           <div className="mt-auto">
             <p className="body md:w-full text-[clamp(.15rem,3.75vw,1.25rem)] mt-5 mb-[10px] text-white"> Aspiring Full Stack Software Engineer focused on building creative solutions that address problems from the simplest to the most complex. With experience under project managers, I have created projects that go into areas of web development, UX/UI design, and computer security. Going into the future, I have plans of diving into AI, specifically ML.</p>
             <div className="flex flex-col [@media(min-width:426px)]:flex-row gap-2 body"> 
               {contacts.map((contact, index) => (
-                <a href={contact.link} target="_blank" rel="noopener noreferrer" className="[@media(max-width:426px)]:justify-center [@media(max-width:540px)]:px-5 px-10 py-2 text-[14px] flex items-center gap-2 bg-[#0353a4] rounded-2xl text-white hover-press drop-shadow-black/20 drop-shadow-sm">{contact.icon} {contact.name} </a>
+                <a key={index} href={contact.link} target="_blank" rel="noopener noreferrer" className="[@media(max-width:426px)]:justify-center [@media(max-width:540px)]:px-5 px-10 py-2 text-[14px] flex items-center gap-2 bg-[#0353a4] rounded-2xl text-white hover-press drop-shadow-[0px_8px_16px_rgba(149,157,165,0.1)]">{contact.icon} {contact.name} </a>
               ))}
            </div>
           </div>
         </div>
+        
         
         <img src="/selfie.jpg" className="w-3/8 h-fit rounded-2xl  border-b-1 border-white/30  drop-shadow-black/20 drop-shadow-sm
         hidden lg:block"/>
@@ -238,12 +266,12 @@ function App() {
     </div>
           
     <div className="w-screen bg-gray-100 pb-30 pt-10 flex flex-col gap-35 
-    px-10
-    md:px-20
-    lg:px-30
-    xl:px-50
-    2xl:px-70
-    ">
+      px-10
+      md:px-20
+      lg:px-30
+      xl:px-50
+      2xl:px-70
+      ">
       {/* skills and tech section // and about me*/}
       <div className='fade-in-section delay-200 w-full gap-10 lg:gap-0 flex flex-col lg:flex-row justify-between'>
         <div className="flex flex-col w-full text-center lg:text-left lg:w-4/8 justify-center-safe gap-3">
