@@ -175,18 +175,18 @@ function App() {
         <a href="#projects" className="text-base font-bold cursor-pointer hover-up">PROJECTS</a>
         <a href="#experience" className="text-base font-bold cursor-pointer hover-up">EXPERIENCE</a>
       </div> : <>
-      <div className={`oswald transition-all duration-300 ease-out h-20 ${isScrolled ? "left-0 right-0 px-[60px] drop-shadow-black/20 drop-shadow-xl text-white bg-[#182140]" : "left-5 right-5 px-10 mb-60 mt-[20px] rounded-3xl text-white bg-white/5"}  py-[45px] fixed z-101 flex flex-row items-center justify-center border-b border-white/30`}> 
-        <a className="text-base font-bold mr-auto"> JHN-WEB UNDER CONSTRUCTION! </a>
+      <div className={`oswald transition-all duration-300 ease-out h-20 [@media(max-width:425px)]:text-[10px] ${isScrolled ? "left-0 right-0 [@media(max-width:425px)]:px-6 px-[60px] drop-shadow-black/20 drop-shadow-xl text-white bg-[#182140]" : "left-5 right-5 [@media(max-width:425px)]:px-5 px-10 mb-60 mt-[20px] rounded-3xl text-white bg-white/5"}  [@media(max-width:425px)]:py-[10px] [@media(max-width:425px)]:h-15 py-[45px] fixed z-101 flex flex-row items-center justify-center border-b border-white/30`}> 
+        <a className="font-bold mr-auto"> JHN-WEB UNDER CONSTRUCTION! </a>
         {!hamOpen ? 
-          <HiMenu onClick={() => setHamOpen(true)} className="transition hover:cursor-pointer hover:drop-shadow-[0px_0px_16px_#0353a4] hover:scale-[1.03] active:scale-[1]" size={40} /> : 
-          <HiX onClick={() => setHamOpen(false)} className="transition hover:cursor-pointer hover:drop-shadow-[0px_0px_16px_#0353a4] hover:scale-[1.03] active:scale-[1]" size={40} />}
+          <HiMenu onClick={() => setHamOpen(true)} className="transition hover:cursor-pointer hover:drop-shadow-[0px_0px_16px_#0353a4] hover:scale-[1.03] active:scale-[1] [@media(max-width:425px)]:w-8 [@media(max-width:425px)]:h-8 w-10 h-10"/> : 
+          <HiX onClick={() => setHamOpen(false)} className="transition hover:cursor-pointer hover:drop-shadow-[0px_0px_16px_#0353a4] hover:scale-[1.03] active:scale-[1] [@media(max-width:425px)]:w-8 [@media(max-width:425px)]:h-8 w-10 h-10"/>}
       </div>
-      <div className={`fixed top-0 transition-all duration-300 ease-out drop-shadow-black/30 drop-shadow-lg ${hamOpen ? "opacity-0 translate-y-[-20px]" : "opacity-100"} ${isScrolled? "bg-white text-black left-5 right-5 rounded-b-4xl mt-22" : "bg-white/5 text-white left-10 right-10 rounded-4xl mt-30"} oswald flex flex-col gap-4 py-5 items-center fixed z-100 border-b-1 border-white/30`}> 
+      {hamOpen && <div className={`fixed top-0 transition-all duration-300 ease-out drop-shadow-black/30 drop-shadow-lg ${hamOpen ? "opacity-0 translate-y-[-20px]" : "opacity-100"} ${isScrolled? "bg-white text-black left-5 right-5 rounded-b-4xl mt-22" : "bg-white/5 text-white left-10 right-10 rounded-4xl mt-30"} oswald flex flex-col gap-4 py-5 items-center fixed z-100 border-b-1 border-white/30`}> 
         <a href="#about" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">ABOUT ME</a> 
         <a href="#skills" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">SKILLS</a>
         <a href="#projects" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">PROJECTS</a>
         <a href="#experience" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">EXPERIENCE</a>
-      </div>
+      </div>}
       </>
       }
       
@@ -233,18 +233,18 @@ function App() {
       
       {/* path art for intro */}
       <svg   className="absolute top-0 left-0 w-screen h-screen pointer-events-none drop-shadow-[0_-20px_6px_rgba(0,0,0,0.1)]" width="200" height="120">
-          <path id="curve"
-            className="fill-gray-100 stroke-gray-100 stroke-2"
-          />
-        </svg>
+        <path id="curve"
+          className="fill-gray-100 stroke-gray-100 stroke-2"
+        />
+      </svg>
 
       {/* introduction section*/}
       <div className="w-full gap-[20px] fade-in-section flex flex-row justify-between h-fit">
         <div className=" w-fit h-80 flex-col flex gap-3 h-fit">
           <div className="flex flex-col"> 
             <div className="flex flex-row gap-2 md:gap-3 mb-0 mt-0">
-              <a className="oswald text-[clamp(2.4rem,3.75vw,3.25rem)] weight-600 text-white"> Hi, my name is{" "}</a>
-              <a className="h-title text-[clamp(2.4rem,3.75vw,3.25rem)] text-[#0353a4] font-semibold text-shadow-[0px_1px_1px_rgba(255,255,255,0.4)] md:text-shadow-[0px_1px_1px_rgba(255,255,255,0.9)]"> Justin Nguyen </a>
+              <a className="oswald text-[clamp(1.25rem,6vw,5rem)] lg:text-[clamp(2.4rem,3.75vw,3.25rem)] weight-600 text-white"> Hi, my name is{" "}</a>
+              <a className="h-title text-[clamp(1.25rem,6vw,5rem)] lg:text-[clamp(2.4rem,3.75vw,3.25rem)] text-[#0353a4] font-semibold text-shadow-[0px_1px_1px_rgba(255,255,255,0.4)] md:text-shadow-[0px_1px_1px_rgba(255,255,255,0.9)]"> Justin Nguyen </a>
             </div>
             <a className="body text-[clamp(1.25rem,3.75vw,1.5rem)] text-white"> Buffalo, New York</a>
           </div>
@@ -325,24 +325,30 @@ function App() {
       </div>
     </div>
     
-    <div className="w-screen bg-gradient-to-br from-[#131b34] to-[#121520] pb-60 pt-30  px-70 flex flex-col gap-35 drop-shadow-[0_-8px_12px_rgba(0,0,0,0.2)]">
+    <div className="w-screen bg-gradient-to-br from-[#131b34] to-[#121520] pb-60 pt-30 flex flex-col gap-35 drop-shadow-[0_-8px_12px_rgba(0,0,0,0.2)]
+       px-10
+      md:px-20
+      lg:px-30
+      xl:px-50
+      2xl:px-70
+      ">
       {/* my projects section */}
       <div className="fade-in-section delay-400 flex flex-col justify-center-safe items-center gap-6">
-        <p id="projects" className="header text-5xl font-semibold text-white"> MY PROJECTS </p>
-        <div className="w-[calc(100%)] flex flex-row flex-wrap gap-[50px]">
+        <p id="projects" className="header text-[clamp(2.25rem,3.75vw,3.25rem)] font-semibold text-white"> MY PROJECTS </p>
+        <div className="w-[calc(100%)] flex flex-col items-center xl:flex-row xl:flex-wrap gap-[50px]">
           {projects.map((project, index) => ( 
-             <div onClick={()=> setProjectView(index + 1)} key={index + 1} className="rounded-2xl border-b-1 border-white/30 bg-gray-100 w-[calc(50%-25px)] h-80 flex flex-col items-start  drop-shadow-black/30 drop-shadow-sm hover-press">
+             <div onClick={()=> setProjectView(index + 1)} key={index + 1} className="rounded-2xl border-b-1 border-white/30 bg-gray-100 w-full md:w-3/4 xl:w-[calc(50%-25px)] h-80 flex flex-col items-start  drop-shadow-black/30 drop-shadow-sm hover-press">
               <div className="rounded-t-2xl h-5/16 w-full bg-black/20"> 
                 <p className={`px-7 py-1 rounded-3xl ${project.status === "Completed" ? 'bg-green-300' : 'bg-yellow-200'} text-[14px] w-fit flex items-center ml-auto m-5 text-black`}> {project.status} </p>
               </div>
               <div className="flex flex-col p-5 gap-2 w-full">
-                <a className="h-body text-[#0353a4] drop-shadow-sm drop-shadow-black/20"> {project.name} </a>
-                <div className="flex flex-row gap-1">
+                <a className="h-body text-[clamp(1.5rem,3.75vw,2rem)] text-[#0353a4] drop-shadow-sm drop-shadow-black/20"> {project.name} </a>
+                <div className="flex flex-row flex-wrap gap-1">
                   {project.tags.map((tag, index) => (
-                    <p key={index} className="body bg-gray-900 w-fit px-3 py-2 rounded-xl text-[12px] text-white drop-shadow-sm drop-shadow-black/10"> {tag} </p>
+                    <p key={index} className="body bg-gray-900 w-fit px-2 py-1 md:px-3 md:py-2 rounded-xl text-[clamp(.5rem,3vw,.8rem)] md:text-[clamp(.5rem,3vw,.8rem)] text-white drop-shadow-sm drop-shadow-black/10"> {tag} </p>
                   ))}
                 </div>
-                <a className="body text-black text-[16px] drop-shadow-sm drop-shadow-black/20"> {project.description} </a>
+                <a className="body text-black text-[clamp(.7rem,3vw,.8rem)] md:text-[clamp(4px,6vw,14px)] drop-shadow-sm drop-shadow-black/20"> {project.description} </a>
               </div>
             </div>
           ))}
@@ -350,11 +356,11 @@ function App() {
       </div>
 
       {/* my experience section */}
-      <div className="flex flex-col justify-center-safe items-center gap-6">
-        <p id="experience" className="header text-white"> EXPERIENCES</p>
+      <div className="flex flex-col justify-center-safe items-center gap-3 [@media(min-width:510px)]:gap-6">
+        <p id="experience" className="header text-white">EXPERIENCES</p>
           <div className="flex flex-row gap-2">
             {experiences.map((experience, index) => (
-              <p key={index} className="bg-[#0353a4] w-auto px-10 py-2 rounded-2xl text-[14px] text-white hover-press drop-shadow-black/20 drop-shadow-sm"> {experience} </p>
+              <p key={index} className="bg-[#0353a4] w-[80px] flex justify-center [@media(min-width:510px)]:px-15 px-6 py-1 text-[10px] [@media(min-width:510px)]:py-2 rounded-2xl [@media(min-width:510px)]:text-[14px] text-white hover-press drop-shadow-black/20 drop-shadow-sm"> {experience} </p>
             ))}
         </div>
       </div>
