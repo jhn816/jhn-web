@@ -181,12 +181,12 @@ function App() {
           <HiMenu onClick={() => setHamOpen(true)} className="transition hover:cursor-pointer hover:drop-shadow-[0px_0px_16px_#0353a4] hover:scale-[1.03] active:scale-[1] [@media(max-width:425px)]:w-8 [@media(max-width:425px)]:h-8 w-10 h-10"/> : 
           <HiX onClick={() => setHamOpen(false)} className="transition hover:cursor-pointer hover:drop-shadow-[0px_0px_16px_#0353a4] hover:scale-[1.03] active:scale-[1] [@media(max-width:425px)]:w-8 [@media(max-width:425px)]:h-8 w-10 h-10"/>}
       </div>
-      {hamOpen && <div className={`fixed top-0 transition-all duration-300 ease-out drop-shadow-black/30 drop-shadow-lg ${hamOpen ? "opacity-0 translate-y-[-20px]" : "opacity-100"} ${isScrolled? "bg-white text-black left-5 right-5 rounded-b-4xl mt-22" : "bg-white/5 text-white left-10 right-10 rounded-4xl mt-30"} oswald flex flex-col gap-4 py-5 items-center fixed z-100 border-b-1 border-white/30`}> 
-        <a href="#about" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">ABOUT ME</a> 
-        <a href="#skills" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">SKILLS</a>
-        <a href="#projects" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">PROJECTS</a>
-        <a href="#experience" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] text-2xl font-bold cursor-pointer hover-up">EXPERIENCE</a>
-      </div>}
+      <div className={`fixed top-0 transition-all duration-300 ease-out [@media(max-width:425px)]:text-[16px] text-2xl drop-shadow-black/30 drop-shadow-lg bg-white text-black ${hamOpen ? "opacity-100" : "opacity-0 translate-y-[-20px]"} ${isScrolled? "left-5 right-5 rounded-b-4xl [@media(max-width:425px)]:mt-13 mt-22" : "[@media(max-width:425px)]:left-5 [@media(max-width:425px)]:right-5 left-10 right-10 rounded-4xl [@media(max-width:425px)]:mt-21 mt-30"} oswald flex flex-col gap-4 py-5 items-center fixed z-100 border-b-1 border-white/30`}> 
+        <a href="#about" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] font-bold cursor-pointer hover-up">ABOUT ME</a> 
+        <a href="#skills" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] font-bold cursor-pointer hover-up">SKILLS</a>
+        <a href="#projects" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] font-bold cursor-pointer hover-up">PROJECTS</a>
+        <a href="#experience" className="transition hover:cursor-pointer hover:scale-[1.03] active:scale-[1] font-bold cursor-pointer hover-up">EXPERIENCE</a>
+      </div>
       </>
       }
       
