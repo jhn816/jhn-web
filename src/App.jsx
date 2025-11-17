@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaExternalLinkAlt} from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { 
   SiJavascript, 
@@ -18,7 +18,7 @@ import {
 } from 'react-icons/si';
 import { MdDashboard } from 'react-icons/md';
 import { FaTasks } from 'react-icons/fa';
-import { HiMenu, HiX } from 'react-icons/hi';
+import { HiMenu, HiX, HiEye } from 'react-icons/hi';
 
 function App() {
   const [projectView, setProjectView] = useState(0);
@@ -116,23 +116,41 @@ function App() {
       name: "The Melting Pot",
       status: "Completed",
       tags: ["React", "JavaScript", "RESTful API", "Agile/Scrum", "Figma", "UX Testing"],
-      description: "A social media platform that makes cooking and recipe sharing effortless. Built with a team of 5, featuring real-time interactions, responsive design, and user-tested UX."
+      description: "A social media platform that makes cooking and recipe sharing effortless. Built with a team of 5, featuring real-time interactions, responsive design, and user-tested UX.",
+      link: "https://themeltingpot.app/",
+      github: ""
     },
     {
       name: "Lambda Phinance",
       status: "In Progress",
       tags: ["MERN Stack", "RESTful API", "Authentication", "Data Visualization"],
-      description: "A full-stack expense tracker that streamlined my fraternity's treasury operations. Features real-time expense sharing, debt management, and visual analytics."    },
+      description: "A full-stack expense tracker that streamlined my fraternity's treasury operations. Features real-time expense sharing, debt management, and visual analytics.",
+      link: "https://lambdaphinance.netlify.app/",
+      github: "https://github.com/jhn816/lambdaphinance"
+    },
     {
       name: "Pet Patrol",
       status: "In Progress",
       tags: ["React", "JavaScript", "MySQL", "PHP", "Agile/Scrum"],
-      description: "An all-in-one pet management app for tracking routines, health records, and nearby services. Share photos and pet information with friends while staying organized."    },
+      description: "An all-in-one pet management app for tracking routines, health records, and nearby services. Share photos and pet information with friends while staying organized.",
+      link: "",
+      github: ""
+    },
     {
       name: "Auction Marketplace",
       status: "Completed",
       tags: ["Django", "MySQL", "WebSockets", "Nginx"],
-      description: "a"
+      description: "a",
+      link: "",
+      github: "https://github.com/lejimene/Talriz"
+    },
+    {
+      name: "jhn-web",
+      status: "In Progress",
+      tags: ["React", "JavaScript", "Tailwind", "Vercel"],
+      description: "This website to showcase my skills and projects that I have done!",
+      link: "https://jhn-web.vercel.app/",
+      github: "https://github.com/jhn816/jhn-web"
     }
   ];
 
@@ -337,12 +355,28 @@ function App() {
         <p id="projects" className="header text-[clamp(2.25rem,3.75vw,3.25rem)] font-semibold text-white"> MY PROJECTS </p>
         <div className="w-[calc(100%)] flex flex-col items-center xl:flex-row xl:flex-wrap gap-[50px]">
           {projects.map((project, index) => ( 
-             <div onClick={()=> setProjectView(index + 1)} key={index + 1} className="rounded-2xl border-b-1 border-white/30 bg-gray-100 w-full md:w-3/4 xl:w-[calc(50%-25px)] h-80 flex flex-col items-start  drop-shadow-black/30 drop-shadow-sm hover-press">
+             <div onClick={() => {
+                if (window.innerWidth <= 445) {
+                  setProjectView(index + 1);
+                }
+              }} 
+              key={index + 1} className="rounded-2xl border-b-1 border-white/30 bg-gray-100 w-full md:w-3/4 xl:w-[calc(50%-25px)] h-80 flex flex-col items-start  drop-shadow-black/30 drop-shadow-sm hover-press">
               <div className="rounded-t-2xl h-5/16 w-full bg-black/20"> 
                 <p className={`px-7 py-1 rounded-3xl ${project.status === "Completed" ? 'bg-green-300' : 'bg-yellow-200'} text-[14px] w-fit flex items-center ml-auto m-5 text-black`}> {project.status} </p>
               </div>
               <div className="flex flex-col p-5 gap-2 w-full">
-                <a className="h-body text-[clamp(1.5rem,3.75vw,2rem)] text-[#0353a4] drop-shadow-sm drop-shadow-black/20"> {project.name} </a>
+                <div className='flex flex-row gap-3 items-center'>
+                  <a className="h-body text-[clamp(1.5rem,3.75vw,2rem)] text-[#0353a4] drop-shadow-sm drop-shadow-black/20"> {project.name} </a>
+                  <a className='[@media(max-width:445px)]:hidden'>
+                    <p onClick={()=> setProjectView(index + 1)} className="hover:scale-[1.05] active:scale-[1] transition body bg-[#0353a4] w-fit mt-1 px-2 md:px-3 md:py-1 rounded-xl text-[clamp(.5rem,3vw,.8rem)] md:text-[clamp(.5rem,3vw,.8rem)] text-white drop-shadow-sm drop-shadow-black/10"> View </p>
+                  </a>
+                  {project.link && <a className="ml-auto [@media(max-width:445px)]:hidden" target="_blank" rel="noopener noreferrer" href={project.link} >
+                  <FaExternalLinkAlt className="text-gray-900 mt-1 hover:drop-shadow-[0px_0px_5px_#0353a44f] transition hover:scale-[1.1] active:scale-[1]"/>
+                  </a>}
+                  {project.github && <a className={`[@media(max-width:445px)]:hidden ${!project.link && "ml-auto"}`} target="_blank" rel="noopener noreferrer" href={project.github} >
+                  <FaGithub className="text-gray-900 mt-1 hover:drop-shadow-[0px_0px_5px_#0353a44f] transition hover:scale-[1.1] active:scale-[1]"/>
+                  </a>}
+                  </div>
                 <div className="flex flex-row flex-wrap gap-1">
                   {project.tags.map((tag, index) => (
                     <p key={index} className="body bg-gray-900 w-fit px-2 py-1 md:px-3 md:py-2 rounded-xl text-[clamp(.5rem,3vw,.8rem)] md:text-[clamp(.5rem,3vw,.8rem)] text-white drop-shadow-sm drop-shadow-black/10"> {tag} </p>
