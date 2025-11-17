@@ -371,10 +371,10 @@ function App() {
                     <p onClick={()=> setProjectView(index + 1)} className="hover:scale-[1.05] active:scale-[1] transition body bg-[#0353a4] w-fit mt-1 px-2 md:px-3 md:py-1 rounded-xl text-[clamp(.5rem,3vw,.8rem)] md:text-[clamp(.5rem,3vw,.8rem)] text-white drop-shadow-sm drop-shadow-black/10"> View </p>
                   </a>
                   {project.link && <a className="ml-auto [@media(max-width:445px)]:hidden" target="_blank" rel="noopener noreferrer" href={project.link} >
-                  <FaExternalLinkAlt className="text-gray-900 mt-1 hover:drop-shadow-[0px_0px_5px_#0353a44f] transition hover:scale-[1.1] active:scale-[1]"/>
+                  <FaExternalLinkAlt className="text-gray-900 mt-1 hover:drop-shadow-[0px_0px_5px_#0353a44f] transition hover:scale-[1.1] active:scale-[1]" size={30}/>
                   </a>}
                   {project.github && <a className={`[@media(max-width:445px)]:hidden ${!project.link && "ml-auto"}`} target="_blank" rel="noopener noreferrer" href={project.github} >
-                  <FaGithub className="text-gray-900 mt-1 hover:drop-shadow-[0px_0px_5px_#0353a44f] transition hover:scale-[1.1] active:scale-[1]"/>
+                  <FaGithub className="text-gray-900 mt-1 hover:drop-shadow-[0px_0px_5px_#0353a44f] transition hover:scale-[1.1] active:scale-[1]" size={30}/>
                   </a>}
                   </div>
                 <div className="flex flex-row flex-wrap gap-1">
