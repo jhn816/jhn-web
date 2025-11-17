@@ -319,7 +319,7 @@ function App() {
           </div>
         </div>
         <div className="flex flex-col w-full text-center lg:text-right lg:w-7/16 h-full">
-            <p id="about" className="h-title text-[#0353a4] text-2xl drop-shadow-black/20 drop-shadow-sm"> ABOUT ME </p>
+            <p id="about" className="h-title text-[#0353a4] text-[clamp(2.25rem,3.75vw,5.25rem)] drop-shadow-black/20 drop-shadow-sm"> ABOUT ME </p>
             <p className='body text-[clamp(.15rem,3.75vw,1.25rem)] text-black text-xl'>I love trying and learning new hobbies and skills. I’ve gotten into snowboarding but I keep busting my a**, and it isn’t cheap! More seriously though, graphic design has been the hobby that shaped my creativity since middle school. And, after 8+ years of practice, I’ve created graphics for others, including YouTube banners, thumbnails, and even logos for gaming teams. It is partly the reason for the drive to build products and designs for myself and others. </p>
         </div>
       </div>
@@ -357,7 +357,7 @@ function App() {
 
       {/* my experience section */}
       <div className="flex flex-col justify-center-safe items-center gap-3 [@media(min-width:510px)]:gap-6">
-        <p id="experience" className="header text-white">EXPERIENCES</p>
+        <p id="experience" className="header text-[clamp(2.25rem,3.75vw,3.25rem)] text-white">EXPERIENCES</p>
           <div className="flex flex-row gap-2">
             {experiences.map((experience, index) => (
               <p key={index} className="bg-[#0353a4] w-[80px] flex justify-center [@media(min-width:510px)]:px-15 px-6 py-1 text-[10px] [@media(min-width:510px)]:py-2 rounded-2xl [@media(min-width:510px)]:text-[14px] text-white hover-press drop-shadow-black/20 drop-shadow-sm"> {experience} </p>
