@@ -99,6 +99,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-primary: #0353a4;
+  --color-dark-bg: #182140;
+  --color-dark-bg-from: #131b34;
+  --color-dark-bg-to: #121520;
+  --color-light-bg: rgb(243, 244, 246);
+  --color-white: rgb(255, 255, 255, .95);
+  --color-black: black;
+  --color-status-complete: rgb(134, 239, 172);
+  --color-status-progress: rgb(254, 240, 138);
 }
 
 html {
