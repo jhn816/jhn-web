@@ -207,7 +207,7 @@ function App() {
     },
     {
       name: "Pet Patrol",
-      status: "In Progress",
+      status: "Completed",
       tags: ["React", "JavaScript", "MySQL", "PHP", "Agile/Scrum"],
       description: "An all-in-one pet management app for tracking routines, health records, and nearby services. Share photos and pet information with friends while staying organized.",
       link: "",
