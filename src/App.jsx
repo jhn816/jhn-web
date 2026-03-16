@@ -98,7 +98,29 @@ function App() {
           "Troubleshoot complex software errors via ticket-based diagnostics; managed inventory logistics for 100+ high-value assets.",
           "Optimized digital infrastructure for campus events, increasing deployment speed and end-user connectivity."
         ]
-      }
+      },
+      {
+        role: "Cashier / Cook",
+        org: "bb.q Chicken",
+        location: "Amherst, NY",
+        period: "Aug 2022 – May 2024",
+        bullets: [
+          "Handled cash transactions while delivering excellent customer service.",
+          "Maintained cleanliness and hygiene standards in both the kitchen and dining area.",
+          "Demonstrated ability to multitask effectively in a fast-paced environment."
+        ]
+      },
+      {
+        role: "Crew Team Member",
+        org: "McDonald's",
+        location: "Cicero, NY",
+        period: "Dec 2019 – Aug 2022",
+        bullets: [
+          "Demonstrated strong teamwork and collaboration skills, contributing to a positive work environment.",
+          "Efficiently and accurately took customer orders and processed transactions.",
+          "Maintained excellent communication with both customers and fellow team members."
+        ]
+      },
     ],
     // Academic
     [
