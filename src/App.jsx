@@ -51,12 +51,26 @@ function App() {
         setNavHamburger(false);
       }
     }
+
+    // Scroll fade-in observer
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('is-visible');
+      }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
   
     window.addEventListener("resize", resizeUpdate);
     resizeUpdate();
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", resizeUpdate);
+      observer.disconnect();
+    };
   }, []);
 
 
@@ -108,7 +122,23 @@ function App() {
           "Built an internal expense-tracking application to streamline treasury operations for 75+ active members.",
           "Managed semesterly budget allocation, dues collection, and financial reporting for the chapter."
         ]
-      }
+      },
+      {
+        role: "AWS Certified Cloud Practitioner",
+        org: "Amazon Web Services",
+        location: "Online",
+        period: "Feb 2026 - Feb 2029",
+        bullets: ["Completed the certification within 2 weeks by doing a lot of prepwork through documentation and YouTube courses."]
+      },
+      {
+        role: "Goodwill® Digital Navigator Certificate",
+        org: "Goodwill Industries International",
+        location: "Online",
+        period: "Feb 2026 - Feb 2029",
+        bullets: ["Completed the certification within a week in order to prep myself for my Digital Skills Trainer position at Mission: Ignite.",
+          "Used these skills to teach and prepare presentations/lessons to the Buffalo Community."
+        ]
+      },
     ],
     // Volunteer
     [
@@ -295,13 +325,20 @@ function App() {
       </>
       }
       
-    <div className="relative w-screen md:w-screen h-screen justify-center bg-gradient-to-br from-[var(--color-dark-bg-from)] to-[var(--color-dark-bg-to)] pt-5 flex flex-col gap-35
+    {/* ── Hero section ── */}
+    <div className="relative w-screen md:w-screen h-screen justify-center bg-gradient-to-br from-[var(--color-dark-bg-from)] to-[var(--color-dark-bg-to)] pt-5 flex flex-col gap-35 overflow-hidden
       px-10
       md:px-20
       lg:px-30
       xl:px-50
       2xl:px-70
       ">
+
+      {/* Ambient background orbs */}
+      <div className="bg-orb bg-orb-1" />
+      <div className="bg-orb bg-orb-2" />
+      <div className="bg-orb bg-orb-3" />
+
       {/* pop up for projects section */}
       { projectView !== 0 && <div className="flex items-center justify-center fixed inset-0 bg-black/20 z-50">
         <div className="bg-gray-900 w-3/4 h-1/2 p-12 rounded-4xl overflow-y-auto">
@@ -341,20 +378,20 @@ function App() {
         />
       </svg>
 
-      {/* introduction section*/}
-      <div className="w-full gap-[20px] fade-in-section flex flex-row justify-between h-fit">
-        <div className=" w-fit h-80 flex-col flex gap-3 h-fit">
+      {/* introduction section */}
+      <div className="w-full gap-[20px] flex flex-row justify-between h-fit">
+        <div className="w-fit h-80 flex-col flex gap-3 h-fit">
           <div className="flex flex-col"> 
             <div className="flex flex-row gap-2 md:gap-3 mb-0 mt-0">
-              <a className="oswald text-[clamp(1.25rem,6vw,5rem)] lg:text-[clamp(2.4rem,3.75vw,3.25rem)] weight-600 text-[var(--color-white)]"> Hi, my name is{" "}</a>
-              <a className="h-title text-[clamp(1.25rem,6vw,5rem)] lg:text-[clamp(2.4rem,3.75vw,3.25rem)] text-[var(--color-primary)] font-semibold text-shadow-[0px_1px_1px_rgba(255,255,255,0.4)] md:text-shadow-[0px_1px_1px_rgba(255,255,255,0.9)]"> Justin Nguyen </a>
+              <a className="hero-greeting oswald text-[clamp(1.25rem,6vw,5rem)] lg:text-[clamp(2.4rem,3.75vw,3.25rem)] weight-600 text-[var(--color-white)]"> Hi, my name is{" "}</a>
+              <a className="hero-name h-title text-[clamp(1.25rem,6vw,5rem)] lg:text-[clamp(2.4rem,3.75vw,3.25rem)] text-[var(--color-primary)] font-semibold text-shadow-[0px_1px_1px_rgba(255,255,255,0.4)] md:text-shadow-[0px_1px_1px_rgba(255,255,255,0.9)]"> Justin Nguyen </a>
             </div>
-            <a className="body text-[clamp(1.25rem,3.75vw,1.5rem)] text-[var(--color-white)]"> Buffalo, New York</a>
+            <a className="hero-location body text-[clamp(1.25rem,3.75vw,1.5rem)] text-[var(--color-white)]"> Buffalo, New York</a>
           </div>
 
           <div className="mt-auto">
-            <p className="body md:w-full text-[clamp(.15rem,3.75vw,1.25rem)] mt-5 mb-[10px] text-white/85"> Aspiring Full Stack Software Engineer focused on building creative solutions that address problems from the simplest to the most complex. With experience under project managers, I have created projects that go into areas of web development, UX/UI design, and computer security. Going into the future, I have plans of diving into AI, specifically ML.</p>
-            <div className="flex flex-col [@media(min-width:426px)]:flex-row gap-2 body"> 
+            <p className="hero-bio body md:w-full text-[clamp(.15rem,3.75vw,1.25rem)] mt-5 mb-[10px] text-white/85"> Aspiring Full Stack Software Engineer focused on building creative solutions that address problems from the simplest to the most complex. With experience under project managers, I have created projects that go into areas of web development, UX/UI design, and computer security. Going into the future, I have plans of diving into AI, specifically ML.</p>
+            <div className="hero-buttons flex flex-col [@media(min-width:426px)]:flex-row gap-2 body"> 
               {contacts.map((contact, index) => (
                 <a key={index} href={contact.link} target="_blank" rel="noopener noreferrer" className="[@media(max-width:426px)]:justify-center [@media(max-width:540px)]:px-5 px-10 py-2 text-[14px] flex items-center gap-2 bg-[var(--color-primary)] rounded-2xl text-white hover-press drop-shadow-[0px_8px_16px_rgba(149,157,165,0.1)]">{contact.icon} {contact.name} </a>
               ))}
@@ -362,7 +399,7 @@ function App() {
           </div>
         </div>
         
-        <img src="/selfie.jpg" className="w-3/8 h-fit rounded-2xl border-b-1 border-white/30 drop-shadow-black/20 drop-shadow-sm hidden lg:block"/>
+        <img src="/selfie.jpg" className="hero-photo w-3/8 h-fit rounded-2xl border-b-1 border-white/30 drop-shadow-black/20 drop-shadow-sm hidden lg:block"/>
       </div>
     </div>
           
@@ -472,7 +509,7 @@ function App() {
       </div>
 
       {/* experience section */}
-      <div className="flex flex-col justify-center-safe items-center gap-6">
+      <div className="fade-in-section flex flex-col justify-center-safe items-center gap-6">
         <p id="experience" className="header text-[clamp(2.25rem,3.75vw,3.25rem)] text-[var(--color-white)]">EXPERIENCES</p>
 
         {/* Tab buttons */}
