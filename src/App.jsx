@@ -14,7 +14,9 @@ import {
   SiMysql, 
   SiPhp, 
   SiFigma, 
-  SiAdobephotoshop 
+  SiAdobephotoshop, 
+  SiPostgresql,
+  SiTypescript
 } from 'react-icons/si';
 import { MdDashboard } from 'react-icons/md';
 import { FaTasks } from 'react-icons/fa';
@@ -166,6 +168,7 @@ function App() {
       { name: "Tailwind", icon: <SiTailwindcss /> },
       { name: "React", icon: <SiReact /> },
       { name: "Figma", icon: <SiFigma /> },
+      { name: "Typescript", icon: <SiTypescript /> },
     ],
   
     backend: [
@@ -175,6 +178,7 @@ function App() {
       { name: "Python", icon: <SiPython /> },
       { name: "MongoDB", icon: <SiMongodb /> },
       { name: "MySQL", icon: <SiMysql /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
     ],
   
     tools: [
